@@ -5,7 +5,7 @@ setup:
 build:
   docker:
     frontend: ./frontend/Dockerfile # Path to your frontend Dockerfile
-    backend: ./backend/dockerfile # Path to your backend Dockerfile
+    backend: ./backend/Dockerfile # Path to your backend Dockerfile
 
 release:
   command:
