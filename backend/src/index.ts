@@ -7,7 +7,7 @@ const port = 3000;
 // app.use(cors());
 
 // Add a health check endpoint
-app.get('/health', (req, res) => {
+app.get('/health', (_, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
