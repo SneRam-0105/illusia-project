@@ -13,8 +13,6 @@ build:
 run:
   frontend:
     image: web
-    env:
-      - BACKEND_URL
     command:
       - nginx -g 'daemon off;'
   backend:
