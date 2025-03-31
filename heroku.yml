@@ -13,11 +13,11 @@ build:
 run:
   frontend:
     image: web
+    env:
+      - BACKEND_URL
     command:
       - nginx -g 'daemon off;'
   backend:
     image: worker
-    env:
-      - BACKEND_URL
     command:
       - node dist/index.js
