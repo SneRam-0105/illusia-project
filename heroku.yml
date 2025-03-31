@@ -11,5 +11,11 @@ build:
     worker: ./backend/Dockerfile
 
 run:
-  frontend: nginx -g 'daemon off;'
-  backend: node dist/index.js
+  frontend:
+    image: web
+    command:
+      - nginx -g 'daemon off;'
+  backend:
+    image: worker
+    command:
+      - node dist/index.js
