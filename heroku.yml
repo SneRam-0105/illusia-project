@@ -10,11 +10,6 @@ build:
     web: ./frontend/Dockerfile
     worker: ./backend/Dockerfile
 
-release:
-  command:
-    - node backend/dist/db/migrate.js
-  image: worker
-
 run:
   frontend: nginx -g 'daemon off;'
   backend: node dist/index.js
