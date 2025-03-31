@@ -13,6 +13,7 @@ RUN npm ci
 # Copy the entire frontend code into the container
 COPY . .
 
+
 # Build the React app
 RUN npm run build
 
@@ -21,6 +22,9 @@ FROM nginx:alpine
 
 # Copy built assets from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Copy nginx configuration
+COPY ../nginx/default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 

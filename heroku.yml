@@ -1,12 +1,32 @@
 setup:
   addons:
-    - plan: heroku-postgresql # Example: Addons like database
+    - plan: heroku-postgresql
+      as: DATABASE
+    - plan: heroku-redis:hobby-dev
+      as: REDIS
 
 build:
   docker:
-    frontend: ./frontend/Dockerfile # Path to your frontend Dockerfile
-    backend: ./backend/Dockerfile # Path to your backend Dockerfile
+    web: ./frontend/Dockerfile
+    worker: ./backend/Dockerfile
+
+release:
+  command:
+    - node backend/dist/db/migrate.js
+  image: worker
 
 run:
-  frontend: npm start --prefix frontend
-  backend: npm start --prefix backend
+  frontend: nginx -g 'daemon off;'
+  backend: node dist/index.js
+
+env:
+  NODE_ENV: production
+  PORT: 8080
+  DB_HOST: ${DATABASE_URL}
+  REDIS_URL: ${REDIS_URL}
+
+healthcheck:
+  test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+  interval: 30s
+  timeout: 10s
+  retries: 3

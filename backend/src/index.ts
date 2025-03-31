@@ -6,6 +6,10 @@ const port = 3000;
 
 // app.use(cors());
 
+// Add a health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
 
 app.listen(port, () => {
   console.log(`Backend is running on port ${port}`);

@@ -6,7 +6,8 @@
     "tsc": "tsc",
     "dev": "ts-node-dev src/index.ts",
     "lint": "eslint .",
-    "build": "tsc"
+    "build": "tsc",
+    "start:prod": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
