@@ -18,15 +18,3 @@ release:
 run:
   frontend: nginx -g 'daemon off;'
   backend: node dist/index.js
-
-env:
-  NODE_ENV: production
-  PORT: 8080
-  DB_HOST: ${DATABASE_URL}
-  REDIS_URL: ${REDIS_URL}
-
-healthcheck:
-  test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-  interval: 30s
-  timeout: 10s
-  retries: 3
