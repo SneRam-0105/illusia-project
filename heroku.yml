@@ -7,7 +7,7 @@ setup:
 
 build:
   docker:
-    web: ./frontend/Dockerfile --build-arg PORT=$PORT
+    web: ./frontend/Dockerfile
     worker: ./backend/Dockerfile
 
 run:
