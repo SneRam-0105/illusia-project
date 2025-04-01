@@ -6,10 +6,8 @@ setup:
       as: REDIS
 
 build:
-  config: 
-    PORT:9876
   docker:
-    web: ./frontend/Dockerfile
+    web: ./frontend/Dockerfile --build-arg PORT=$PORT
     worker: ./backend/Dockerfile
 
 run:
