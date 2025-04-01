@@ -6,6 +6,8 @@ setup:
       as: REDIS
 
 build:
+  config:
+    PORT:$PORT
   docker:
     web: ./frontend/Dockerfile
     worker: ./backend/Dockerfile

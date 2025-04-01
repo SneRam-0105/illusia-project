@@ -1,3 +1,5 @@
+ARG PORT
+
 # Use an official Node.js image as the base image
 FROM node:20-alpine AS builder
 
